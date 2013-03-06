@@ -1,0 +1,31 @@
+.tools {
+	position: absolute;
+	width: 10%;
+	height: 90%;
+	
+	left: 2%;
+	top: 5%;
+	
+	display: inline;
+	border: 2px solid rgba(255, 180, 180, 0.8);
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.tool {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	
+	float: left;
+	margin: 23px;
+	
+	background-color: #00a08b;
+	box-shadow: 3px 3px 6px #fff;
+	border: 2px;
+	border-radius: 100px;
+}
+
+.tool:hover {
+	-webkit-transform: scale(1.2);
+	background-color: #f28d01;
+}

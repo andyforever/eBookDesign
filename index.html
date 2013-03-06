@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book Design</title>
+        <meta http-equiv="Content-Type" content="application/x-javascript; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel='stylesheet' href="./css/design.css"/>
+        <link rel='stylesheet' href="./css/controls.css"/>
+        <link rel='stylesheet' href="./css/transforms.css"/>
+        <script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="./js/book.js"></script>
+    </head>
+    <body>
+        <div id="tools" class="tools">
+            <a >
+                <img src="./res/icon/add.png" class="tool" />
+            </a>
+            <a>
+                <img src="./res/icon/Crop Tool.png" class="tool"/>
+            </a>
+            <a>
+                <img src="./res/icon/Rectangular Marquee Tool.png" class="tool"/>
+            </a>
+            <a>
+                <img src="./res/icon/Camera.png" class="tool"/>
+            </a>
+            <a>
+                <img src="./res/icon/Pen Tool.png" class="tool"/>
+            </a>
+            <a>
+                <img src="./res/icon/Tag.png" class="tool"/>
+            </a>
+            <a>
+                <img src="./res/icon/Eraser.png" class="tool"/>
+            </a>
+            <a>
+                <img src="./res/icon/Blank Page.png" class="tool"/>
+            </a>
+            <a>
+                <img src="./res/icon/Copy 1.png" class="tool"/>
+            </a>
+            <a>
+                <img src="./res/icon/Equalizer 8.png" class="tool"/>
+            </a>
+            <a>
+                <img src="./res/icon/Paintbrush Tool.png" class="tool"/>
+            </a>
+            <a>
+                <img src="./res/icon/Star 2.png" class="tool"/>
+            </a>
+            <a>
+                <img src="./res/icon/Play.png" class="tool"/>
+            </a>
+            <a>
+                <img src="./res/icon/Zoom In.png" class="tool"/>
+            </a>
+            <a>
+                <img src="./res/icon/Zoom Out.png" class="tool"/>
+            </a>
+            <a>
+                <img src="./res/icon/Trash.png" class="tool"/>
+            </a>
+        </div>
+        <div id="prev" class="prev">
+            <div id="btn_run"></div>
+        </div>
+        <div id="workSpace" class="workSpace">
+            <div id="stage">
+                <div id="back_face">
+                </div>
+                <div id="ground_face">
+                </div>
+                <div id="cube" class="cube">
+                    <div id="book">
+                        <div id="pageLeft" class="page">
+                            1
+                        </div>
+                        <div id="pageRight" class="page">
+                            2
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="info" class="info">
+            <table id="t_info" frame="box">
+                <!-- <caption>信息</caption> -->
+                <thead>
+                    <th align="left" colspan="6">信息</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>坐标&nbsp;&nbsp;x：</td>
+                        <td id="ox">-</td>
+                        <td>坐标&nbsp;&nbsp;y：</td>
+                        <td id="oy">-</td>
+                        <td>坐标&nbsp;&nbsp;z：</td>
+                        <td id="oy">-</td>
+                    </tr>
+                    <tr>
+                        <td>宽度&nbsp;&nbsp;w：</td>
+                        <td id="ow">-</td>
+                        <td>高度&nbsp;&nbsp;h：</td>
+                        <td id="oh">-</td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1">背景&nbsp;&nbsp;src：</td>
+                        <td colspan="5" id="src"></td>
+                    </tr>
+                </tbody>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div id="controls" class="controls">
+                <table>
+                    <thead>
+                        <th align="left" colspan="4">编辑</th>
+                    </thead>
+                    <tr>
+                        <td colspan="3">transform-origin:</td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 1em;">horizontal:</td>
+                        <td colspan="1"><span id="originX" class="sliderControl" slideroptions="min:0;max:100;value=50;units=%;setter=UpdateSample"></span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 1em;">vertical:</td>
+                        <td colspan="1"><span id="originY" class="sliderControl" slideroptions="min:0;max:100;value=50;units=%;setter=UpdateSample"></span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">transform:</td>
+                    </tr>
+                    <tbody id="transformList"></tbody>
+                    <!-- <tr>
+                        <td colspan="3" style="height: 0px; border-bottom: 2px dotted lightblue;"></td>
+                    </tr> -->
+                    <tr>
+                        <td colspan="2" style="padding-top: 8px;"><label>Append another transform function:
+                            <select onchange="AppendTransformFunction(this.options[this.selectedIndex].value);this.selectedIndex=0;">
+                                <option>[Select]</option>
+                                <option value="translate2">translate(Δx, Δy)</option>
+                                <option value="translate3d" class="d3">translate3d(Δx, Δy, Δz)</option>
+                                <option value="translateX">translateX(Δx)</option>
+                                <option value="translateY">translateY(Δy)</option>
+                                <option value="translateZ" class="d3">translateZ(Δz)</option>
+                                <option value="scale1">scale(sxy)</option>
+                                <option value="scale2">scale(sx, sy)</option>
+                                <option value="scale3d" class="d3">scale3d(sx, sy, sz)</option>
+                                <option value="scaleX" class="d3">scaleX(sx)</option>
+                                <option value="scaleY" class="d3">scaleY(sy)</option>
+                                <option value="scaleZ" class="d3">scaleZ(sx)</option>
+                                <option value="rotate1">rotate(θ)</option>
+                                <option value="rotateX" class="d3">rotateX(θx)</option>
+                                <option value="rotateY" class="d3">rotateY(θy)</option>
+                                <option value="rotateZ" class="d3">rotateZ(θz)</option>
+                                <option value="rotate3d" class="d3">rotate3d(Δx, Δy, Δz, θ)</option>
+                                <option value="skew2">skew(θx, θy)</option>
+                                <option value="skewX">skewX(θx)</option>
+                                <option value="skewY">skewY(θy)</option>
+                                <option value="perspective" class="d3">perspective(depth)</option>
+                            </select></label></td>
+                            <td ></td>
+                    </tr>
+                </table>
+        </div>
+        <script type="text/javascript" src="./js/book.js"></script>
+        <script type="text/javascript" src="./js/info.js"></script>
+        <script type="text/javascript" src="./js/hands-on.js"></script>
+        <script type="text/javascript" src="./js/transforms.js"></script>
+        <script type="text/javascript" src="./js/PointerDraw.js"></script>
+        <script type="text/javascript" src="./js/sliderControl.js"></script>
+    </body>
+</html>
